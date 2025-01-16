@@ -1,0 +1,152 @@
+---
+title: "le jeu du puissance 4"
+description: "SAE 1.01 — Réaliser un développement d'applications"
+publishedAt: "06-14-2023"
+thumbnail: "/images/connect4.jpg"
+alternativeText: "le jeu du puissance 4"
+tech: "javascript html css"
+competences: "Réaliser Optimiser"
+---
+
+## 1. présentation du projet
+
+Le but de ce projet était de réaliser le célèbre jeu Puissance 4 en langage C.
+
+Ce projet s’inscrivait dans une démarche pédagogique visant à approfondir les compétences en programmation, notamment dans la gestion des structures de données, l'implémentation de logiques complexes, et l'interaction avec l'utilisateur par le biais d'une interface en console.
+
+### étapes du projet :
+
+- Maquettage du jeu
+- Élaboration d'un cahier de test
+- Conception de l'algorithme en pseudo-code
+- Développement du programme en C
+- Rendu d'une trace d'exécution
+
+<Gallery
+    images={[
+        {src: '/images/connect4.jpg', alt: 'le jeu du puissance 4'},
+        {src: '/images/pseudo.png', alt: 'le jeu du puissance 4'},
+        {src: '/images/maquette.png', alt: 'le jeu du puissance 4'},
+    ]}
+/>
+
+```c
+int main() {
+    char vainqueur;
+    int ligne, colonne;
+    grille g;
+
+    initGrille(g);
+    vainqueur = INCONNU;
+    afficherTitre();
+
+    while ((vainqueur==INCONNU) && (grillePleine(g) == false)) {
+        jouer(g, PION_A, &ligne, &colonne);
+        afficher(g, PION_B, COLONNE_DEBUT);
+
+        if (estVainqueur(g, ligne, colonne) == true) {
+            vainqueur = PION_A;
+        }
+        
+        else if (grillePleine(g) == false) {
+            jouer(g, PION_B, &ligne, &colonne);
+            afficher(g, PION_A, COLONNE_DEBUT);
+            if (estVainqueur(g, ligne, colonne) == true) {
+                vainqueur = PION_B;
+            }
+        }
+    }
+    finDePartie(vainqueur);
+}
+```
+
+## 2. présentation de la stratégie
+
+Le but de ce projet était de réaliser une "stratégie" qui puisse jouer au puissance 4 soit contre un joueur soit contre une autre stratégie
+
+### étapes du projet :
+
+- Tri de 10 entiers
+- Tri de 500 000 entiers
+- Tri de chaines de caractères
+- Ajout de données réelles
+- Évaluation individuelle
+
+```c
+bool estVainqueur(Grille laGrille, int lig, int col){
+    // consiste à regarder si une ligne de 4 pions s'est formée autour du pion qui vient de tomber en (lig, col)
+    char lePion = laGrille[lig][col];
+    int cpt,i,j;
+
+    // regarder la verticale, en comptant le nombre de pions au Sud (inutile de regarder au Nord du pion qui vient de tomber)
+    i = lig;
+    cpt = 0;
+    while (i<NB_LIGNES && laGrille[i][col]==lePion){
+        cpt++;
+        i++;
+    }
+    if (cpt>=4){
+        return true;
+    }
+    // regarder l'horizontale, en comptant le nombre de pions à l'Est et à l'Ouest
+    j = col;
+    cpt = 0;
+    // on regarde à l'est
+    while (j>=0 && laGrille[lig][j]==lePion){
+        cpt++;
+        j--;
+    }
+    j = col+1;
+    // on regarde à l'ouest
+    while (j<NB_COLONNES && laGrille[lig][j]==lePion){
+        cpt++;
+        j++;
+    }
+    if (cpt>=4 ){
+        return true;
+    }
+    // regarder la diagonale descendante, en comptant le nombre de pions au Nord Ouest et au Sud Est
+    i = lig;
+    j = col;
+    cpt = 0;
+    // on regarde au Nord Ouest
+    while (j>=0 && i>=0 && laGrille[i][j]==lePion){
+        cpt++;
+        i--;
+        j--;
+    }
+    i = lig+1;
+    j = col+1;
+    // on regarde au Sud Est
+    while (i<NB_LIGNES && j<NB_COLONNES && laGrille[i][j]==lePion){
+        cpt++;
+        i++;
+        j++;
+    }
+    if (cpt>=4 ){
+        return true;
+    }
+    // regarder la diagonale descendante, en comptant le nombre de pions au Nord Est et au Sud Ouest
+    i = lig;
+    j = col;
+    cpt = 0;
+    // on regarde au Nord Est
+    while (j<NB_COLONNES && i>=0 && laGrille[i][j]==lePion){
+        cpt++;
+        i--;
+        j++;
+    }
+    i = lig+1;
+    j = col-1;
+    // on regarde au Sud Ouest
+    while (i<NB_LIGNES && j<NB_COLONNES && laGrille[i][j]==lePion){
+        cpt++;
+        i++;
+        j--;
+    }
+    if (cpt>=4 ){
+        return true;
+    }
+    return false;
+}
+```

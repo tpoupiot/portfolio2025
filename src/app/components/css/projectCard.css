@@ -1,0 +1,94 @@
+.project-card {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  height: 400px;
+  background: var(--background);
+  -webkit-transition: -webkit-box-flex 0.5s;
+  transition: -webkit-box-flex 0.5s;
+  transition: flex 0.5s;
+  transition: flex 0.5s, -webkit-box-flex 0.5s, -ms-flex 0.5s;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  -ms-flex-line-pack: end;
+      align-content: end;
+}
+
+.project-card > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: scale 0.25s;
+  transition: scale 0.25s;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+}
+
+.project-card > div {
+  position: relative;
+  z-index: 1;
+  background: radial-gradient(300% 100% at 50% 100%, var(--background) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 30px;
+}
+
+.project-card > div h3 {
+  font-size: 2.125rem;
+  font-weight: 600;
+  line-height: 90%;
+  letter-spacing: -0.1rem;
+  margin-bottom: 10px;
+  text-wrap: pretty;
+}
+
+.project-card > div h3:hover {
+  text-decoration: underline;
+}
+
+.project-card > div p {
+  font-size: 16px;
+  opacity: 0;
+  height: 0px;
+  -webkit-transition: opacity 0.2s, height 0.3s;
+  transition: opacity 0.2s, height 0.3s;
+}
+
+.project-card > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.project-card > div > div .tag {
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--white-20);
+}
+
+.project-card:hover > img {
+  scale: 1.1;
+}
+
+.project-card:hover > div p {
+  opacity: 0.6;
+  height: 19.2px;
+}
+/*# sourceMappingURL=projectCard.css.map */

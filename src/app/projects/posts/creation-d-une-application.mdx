@@ -1,0 +1,54 @@
+---
+title: "gestionnaire de réservation"
+description: "SAE 2.01 — Réaliser un développement d'applications"
+publishedAt: "06-16-2023"
+thumbnail: "/images/dev-app1.jpg"
+alternativeText: "création d'une application"
+tech: "java javafx scenebuilder"
+competences: "Réaliser Concevoir"
+---
+
+## 1. présentation du projet
+
+Le but de ce projet était de créé une application de gestion des réservations avec JavaFX pour l'hôtel du cheval blanc.
+
+### étapes du projet :
+
+- Réalisation d'un diagramme UML
+- Maquettage de l'application avec ScreenBuilder
+- Développement de l'application en JavaFX
+
+### introduction
+L’hôtel du Cheval Blanc est situé à Aix-en-Provence. Il dispose de 81 chambres de
+plusieurs catégories (exemple : Économique, Standard ou Supérieure). Une chambre est d’une
+catégorie et d’une seule et permet de recevoir un nombre d’occupants maximum. En plus de la location
+de chambres, l’hôtel propose diverses prestations : navette jusqu’à la gare la plus proche, pressing,
+etc.
+Le domaine d’étude porte sur la gestion des réservations (réservation, facturation, annulation) et celle
+des prestations. Actuellement, l’hôtel dispose de deux PC et de deux imprimantes.
+
+<Gallery
+    images={[
+        { src: '/images/dev-app1.jpg', alt: 'dev app' },
+        { src: '/images/javafx.png', alt: 'javafx' },
+        { src: '/images/cheval.jpg', alt: 'cheval' }
+    ]}
+/>
+
+#### extrait de code : classe Petit déjeuner
+```java
+import java.util.Calendar;
+
+public class Petit_dej extends Consomation {
+	private Calendar date;
+
+	public Petit_dej(int numChambre, String type, String libelle, int quantite) {
+		super(numChambre, type, libelle, quantite);
+		this.date = Calendar.getInstance();
+	}
+
+	public Calendar getDate() {
+		return date;
+	}
+}
+```

@@ -1,0 +1,189 @@
+:root {
+    --sh-class: #4c97f8;
+    --sh-identifier: white;
+    --sh-sign: #8996a3;
+    --sh-string: #0fa295;
+    --sh-keyword: #f47067;
+    --sh-comment: #a19595;
+    --sh-jsxliterals: #6266d1;
+    --sh-property: #e25a1c;
+    --sh-entity: #e25a1c;
+}
+
+#single-article {
+    section:not(:first-of-type) {
+        margin-bottom: 50px;
+    }
+
+    section:last-of-type {
+        margin-bottom: 100px
+    }
+
+    img {
+        background: hsla(0, 0%, 100%, .05);
+    }
+
+    .hero {
+        margin-bottom: 50px;
+
+        &__content {
+            text-align: center;
+
+            .competences {
+                margin-top: 100px;
+                margin-bottom: 1rem;
+                display: flex;
+                justify-content: center;
+                gap: 6px;
+
+                span {
+                    backdrop-filter: blur(5px);
+                    padding: 5px 12px;
+                    border-radius: 10px;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    font-size: 14px;
+                    border: 1px solid var(--white-20);
+                }
+            }
+
+            h1 {
+                font-size: 4rem;
+                font-weight: 700;
+                line-height: 95%;
+                letter-spacing: -.06em;
+                color: #fff;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            p {
+                margin-bottom: 50px;
+                font-size: 18px;
+            }
+            
+            .more {
+                display: flex;
+                justify-content: space-between;
+                font-size: 16px;
+                opacity: 0.4;
+                margin-top: 10px;
+
+                p {
+                    font-size: 16px;
+                    margin: 10px 5px;
+                }
+            }
+
+            img {
+                aspect-ratio: 16/9;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 16px;
+                display: block;
+            }
+        }
+    }
+
+    .article {
+        &__content {
+            .btn {
+                float: right;
+                margin-top: 8px;
+            }
+
+            p a {
+                color: #d15965;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+                text-decoration: underline;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                letter-spacing: -.06em;
+                color: #fff;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+                letter-spacing: -.06em;
+            }
+
+            h4 {
+                font-size: 20px;
+                letter-spacing: -0.06em;
+            }
+
+            h2, h3, h4 {
+                margin-bottom: 1rem;
+                margin-top: 2rem;
+            }
+
+            p, ul {
+                font-size: 18px;
+            }
+
+            p {
+                margin-bottom: 1em;
+            }
+
+            img {
+                aspect-ratio: 16/9;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 16px;
+            }
+
+            ul {
+                margin: 1rem 0;
+                padding-left: 30px;
+            }
+
+            ol {
+                margin: 1rem 0;
+                padding-left: 20px;
+            }
+
+            pre {
+                backdrop-filter: blur(20px);
+                background: rgba(255, 255, 255, 0.05);
+                color: var(--white);
+                padding: 20px;
+                border-radius: 16px;
+                margin-bottom: 50px;
+                overflow-x: auto;
+                border: 1px solid var(--white-10);
+                font-size: 14px;
+
+                code {
+                    font-family: 'Geist mono', monospace;
+
+                    .sh__line {
+                        line-height: 1.6;
+                    }
+
+                    .sh__token--string {
+                        white-space: normal;
+                    }
+                }
+            }
+        }
+    }
+
+    .gallery {
+        display: flex;
+        gap: 20px;
+        margin: 50px 0;
+        
+        > img {
+            flex: 1;
+            aspect-ratio: 1;
+            width: 30%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+---
+title: "installation d'un poste de développement"
+description: "SAE 1.03 — Administrer des systèmes complexes"
+publishedAt: "11-11-2020"
+thumbnail: "/images/poste-dev.jpg"
+alternativeText: "le jeu du puissance 4"
+tech: "bash html css php docker"
+competences: "Administrer Réaliser"
+---
+
+## 1. présentation du projet
+
+Le but de ce projet était de réaliser un générateur de PDF pour une ESN à partir de données fournis au préalable.
+
+### contexte
+
+Vous travaillez dans une ESN et un client fait appel à votre société pour réaliser un outil
+capable de produire une série de PDF à destination de leurs équipes commerciales régionales.
+
+Ce client est présent sur tout le territoire national et il veut présenter, à ses commerciaux,
+des résultats trimestriels dont il va vous fournir les informations brutes, que vous devrez
+traiter et formater en quelque chose de propre et d’agréable à lire.
+
+Ce travail sera récurrent et, dans un premier temps, il devra pouvoir être réalisé par
+n’importe quel membre de l’équipe de développement.
+
+### étapes du projet :
+
+- Identifier les outils nécessaires
+- Préparation des fichiers de test (données et configs)
+- Proposition d'un workflow enchaînant les outils
+- Production finale et "scriptage" du workflow
+
+#### extrait d'un script bash
+```bash
+docker container run -ti --rm -v $1:/work sae103-imagick "magick $2 -grayscale Rec709Luminance -crop 600x550+0+0 -resize 200x200 $3"
+```
+
+#### extrait d'un script php
+```php
+<?php
+    if(sizeof($argv) < 1) {
+        echo "Error: arguments manquant";
+        exit();
+    }
+
+    $text = $argv[1];
+    $url = $argv[2];
+    $code = $argv[3];
+
+    // exec("egrep -i code=fr-[a-z]{3} < ./Ressources_client_Textes-20221212/{$text} | cut -d'=' -f2 ", $res);
+    exec("php ./script/tmp.php {$argv[1]}");
+
+    // exec("php ./script/scriptQRCode {$res[0]} {$url}");
+    exec("php ./script/script1.php ./résultatTexte/texte.dat ./résultatTexte/tableau.dat ./résultatTexte/comm.dat ./regions.conf {$code}", $html);
+
+    print_r($html);
+?>
+```

@@ -1,0 +1,88 @@
+---
+title: "application web d'un pokedex"
+description: "SAE 4.01 — Réaliser un développement d'applications"
+publishedAt: "03-25-2024"
+thumbnail: "/images/pokemon.jpg"    
+alternativeText: "projet pokedex"
+tech: "html css javascript"
+competences: "Réaliser Concevoir"
+---
+
+## 1. présentation du projet
+
+L'objectif de ce projet est de construire une WebApp qui affichera des informations sur
+les Pokémons, et permettra de rechercher, trier, filtrer les Pokémons et leurs informations
+en fonction de divers critères.
+
+### étapes du projet :
+
+- Lecture des données depuis des fichiers JSON.
+- Analyse des différents fichiers.
+- Réalisation des différentes classes en javascript.
+- Mise en place de tests unitaires.
+- Intégration d'une page web pour afficher les informations.
+
+<Gallery
+    images={[
+        {src: '/images/pokemon.jpg', alt: 'projet pokedex'},
+        {src: '/images/poke1.png', alt: 'projet pokedex'},
+        {src: '/images/poke2.png', alt: 'projet pokedex'},
+    ]}
+/>
+
+#### extrait de code de tris et de filtres
+
+```javascript
+const filter = () => {
+    let generation = document.getElementById("generation").value;
+    let type = document.getElementById("type").value;
+    let search = document.getElementById("search").value;
+
+    // On filtre les lignes du tableau en fonction de la génération et du type et de la recherche
+    currentTable = TRtable.filter(pokemon =>
+        // Si la génération est égale à 0, on affiche tous les pokemon
+        (generation === "0" || pokemon.querySelector('.pokemon__row-generation').textContent.includes(generation))
+        &&
+        // Si le type est égal à 0, on affiche tous les pokemon
+        (type === "0" || pokemon.querySelector('.pokemon__row-types').textContent.includes(type))
+        &&
+        // Si la recherche correspond à un nom de pokemon ...
+        (pokemon.querySelector('.pokemon__row-name').textContent.toLowerCase().includes(search.toLowerCase()))
+    )
+
+    // On réinitialise la page actuelle
+    localStorage.setItem('currentPage', 1)
+
+    reloadPage()
+}
+
+const sortById = () => {
+
+    // Si la classe active est Ascend
+    if (!document.querySelector('.th__id').classList.contains('ascend')) {
+
+        // Transforme les ID en entier et les tris du + petit au + grand
+        currentTable.sort((a, b) => {
+            return parseInt(a.querySelector('.pokemon__row-id').textContent.slice(1))
+                - parseInt(b.querySelector('.pokemon__row-id').textContent.slice(1))
+        })
+
+        // Reset les classes et ajoute la classe ascend
+        classReset()
+        document.querySelector('.th__id').classList.add('ascend')
+    } else {
+
+        // Du + grand au + petit
+        currentTable.sort((a, b) => {
+            return parseInt(b.querySelector('.pokemon__row-id').textContent.slice(1))
+                - parseInt(a.querySelector('.pokemon__row-id').textContent.slice(1))
+        })
+
+        // Reset les classes et ajoute la classe descend
+        classReset()
+        document.querySelector('.th__id').classList.add('descend')
+    }
+
+    reloadPage()
+}
+```

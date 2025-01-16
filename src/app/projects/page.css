@@ -1,0 +1,34 @@
+#project .hero__content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 95%;
+  letter-spacing: -.35rem;
+  color: #fff;
+  margin-top: 100px;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+#project .project__content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(400px, 1fr))[2];
+      grid-template-columns: repeat(2, minmax(400px, 1fr));
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 870px) {
+  #project .project__content {
+    -ms-grid-columns: (minmax(300px, 1fr))[1];
+        grid-template-columns: repeat(1, minmax(300px, 1fr));
+  }
+}
+/*# sourceMappingURL=page.css.map */

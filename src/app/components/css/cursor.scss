@@ -1,0 +1,53 @@
+.cursor {
+    position: absolute;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s, opacity 0.1s, scale 0.1s;
+    display: grid;
+    place-items: center;
+    color: var(--black);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    scale: 0;
+    transform-origin: top left;
+
+    svg:nth-child(1) {
+        position: absolute;
+        transform: translate(-125%, 125%);
+        animation: cursorSvg1 1s infinite;
+    }
+
+    svg:nth-child(2) {
+        animation: cursorSvg2 1s infinite;
+    }
+}
+
+@keyframes cursorSvg1 {
+    0% {
+        transform: translate(-125%, 125%);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes cursorSvg2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(125%, -125%);
+    }
+}
+
+body:has(.project-card:hover) {
+    .cursor {
+        opacity: 1;
+        scale: 1;
+    }
+}
