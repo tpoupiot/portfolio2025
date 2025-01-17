@@ -28,7 +28,7 @@ export default async function Page() {
                         <span>sept. 2023 - aujourd’hui</span>
                     </div>
 
-                    <div className="experience__content__item" data-aos="fade-up">
+                    <div className="experience__content__item" data-aos="fade-up" data-aos-delay="50">
                         <Image src="/icons/Logo_IUT_Lannion.svg" alt="Lannion" width={100} height={100} />
                         <div>
                             <h2>
