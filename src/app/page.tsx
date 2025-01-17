@@ -29,7 +29,7 @@ export default function Home() {
 							<GitHubLogoIcon width={16} height={16} />
 							github
 						</ButtonLink>
-						<ButtonLink href={"linkedin.com/in/timéo-poupiot-440a08268"} data-aos="zoom-in" data-aos-delay="150">
+						<ButtonLink href={"https://linkedin.com/in/timéo-poupiot-440a08268"} data-aos="zoom-in" data-aos-delay="150">
 							<LinkedInLogoIcon width={16} height={16} />
 							linkedin
 						</ButtonLink>
@@ -48,11 +48,11 @@ export default function Home() {
 						<div className="about__content__pres__paragraph" data-aos="fade-up">
 							<p>
 								Bonjour ! En tant qu&apos;Étudiant en --&gt; BUT Informatique, je suis passionné par le développement web. 
-								J&apos;ai pour ambition de devenir développeur web fullstack afin de concevoir les site webs de demain !
+								J&apos;ai pour ambition de devenir développeur web fullstack afin de concevoir les sites webs de demain !
 							</p>
 							<p>
 								Je suis actuellement en alternance chez --&gt; NetCurd, une entreprise de développement web pour acquérir de l&apos;expérience
-								et compléter mon panel de connaissance de développeur web.
+								et compléter mon panel de connaissances de développeur web.
 							</p>
 							<div className="about__content__pres__paragraph__links" >
 								<ButtonLink href={"/cv-original-poupiot.pdf"} target="blank" data-aos="fade-up">mon cv</ButtonLink>
