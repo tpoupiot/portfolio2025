@@ -11,19 +11,21 @@ export default function ProjectCard({
     competences,
     tech,
     image,
-    link
+    link,
+    delay,
 }: {
     title: string
     competences: string | undefined
     tech: string | undefined
     image: Image
     link: string
+    delay?: number
 }) {
     const compList = competences?.split(' ')
     const formattedTech = tech?.split(' ').join(', ');
 
     return (
-        <a href={link} className="project-card" data-aos="fade-up">
+        <a href={link} className="project-card" data-aos="fade-up" data-aos-delay={delay}>
             <Image
                 src={ image.src }
                 alt={ image.alt }

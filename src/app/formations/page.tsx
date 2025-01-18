@@ -1,6 +1,14 @@
 import Link from "next/link";
 import "./page.css";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Formations",
+    description: "Découvrez mon parcours scolaire",
+    keywords: "développeur web, portfolio, projets, contact",
+    robots: "index, follow",
+};
 
 export default async function Page() {
     return (

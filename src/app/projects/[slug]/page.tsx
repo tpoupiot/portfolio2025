@@ -6,9 +6,22 @@ import Image from 'next/image';
 import './page.css';
 import ButtonLink from '@/app/components/Button';
 import { CodeXml } from 'lucide-react';
+import { Metadata } from 'next';
 
 interface PageParams {
     slug: string;
+}
+ 
+export async function generateMetadata({ params }: { params: Promise<PageParams> }): Promise<Metadata> {
+    const { slug } = await params;
+    const post = getProjectPosts().find((post) => post.slug === slug);
+    
+    return {
+        title: post?.metadata.title,
+        description: post?.metadata.description,
+        keywords: "développeur web, portfolio, projets, contact",
+        robots: "index, follow",
+    };
 }
 
 export default async function Page({ params }: { params: Promise<PageParams> }) {
@@ -22,7 +35,7 @@ export default async function Page({ params }: { params: Promise<PageParams> }) 
     const formattedDate = new Date(post.metadata.publishedAt).toLocaleDateString('fr-FR', {
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
+        day: 'numeric' 
     });
 
     const formattedTech = post.metadata.tech?.split(' ').join(', ');
