@@ -42,7 +42,7 @@
     }
 
     .about {
-        height: 500px;
+        min-height: 500px;
         margin-top: 20vh;
 
         &__content {
@@ -62,6 +62,7 @@
 
             &__pres {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: center;
                 gap: 100px;
 

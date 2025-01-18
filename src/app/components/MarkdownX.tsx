@@ -73,10 +73,8 @@ function createHeading(level: number) {
         React.createElement('a', {
           href: `#${slug}`,
           key: `link-${slug}`,
-          className: 'anchor',
-        }),
+        }, children),
       ],
-      children
     )
   }
 
