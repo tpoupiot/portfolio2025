@@ -5,6 +5,7 @@ import Cursor from "./components/Cursor";
 import localFont from "next/font/local";
 import "./globals.css";
 import AOS from "./components/AOS";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -37,6 +38,7 @@ export default function RootLayout({
     return (
         <html lang="fr">
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                <SpeedInsights/>
 			    <AOS />
 				<Header />
                 {children}
